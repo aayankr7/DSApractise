@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int j, i;
+
+    for(i=5;i>0;i--)
+    {
+        for(j = 1; j<=i; j++)
+        {
+            char x = 'A' + j - 1;
+            cout<<x;
+        }
+        cout<<endl;
+    }
+}
