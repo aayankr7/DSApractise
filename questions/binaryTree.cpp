@@ -1,4 +1,5 @@
-#include<bits\stdc++.h>
+#include<iostream>
+#include<cstdlib>
 using namespace std;
 
 struct node
@@ -65,22 +66,29 @@ void insert (struct treeNode* root, int x)
 
 struct treeNode* plantTree(struct node* l)
 {
-    struct treeNode* root;
+    struct treeNode* root = (struct treeNode*)malloc(sizeof(treeNode));
     struct node* p;
     p = l;
+    root->left = NULL;
+    root->right = NULL;
     root->val = p->val;
     p=p->next;
-    while(p->next != NULL)
+    
+    while(p!= NULL)
     {
         insert(root, p->val);
         p=p->next;
+        if(p->next == NULL)
+        {
+            insert(root, p->val);
+        }
     }
 
     return root;
 }
 
 // For testing
-void inorder(treeNode* root)
+void inorder(struct treeNode* root)
 {
     if(root == NULL)
     {
@@ -94,7 +102,7 @@ void inorder(treeNode* root)
 
 int main()
 {
-    int arr[] = {10, 5, 15, 3, 7, 12, 18};
+    int arr[] = {10};
     int n = sizeof(arr)/sizeof(arr[0]);
 
     node* head = linkedList(arr, n);
